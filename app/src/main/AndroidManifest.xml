@@ -28,6 +28,9 @@
             android:name=".presentation.todo.TodoDetailActivity"
             android:exported="false"/>
         <activity
+            android:name=".presentation.todo.TodoFavoriteActivity"
+            android:exported="false"/>
+        <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>
