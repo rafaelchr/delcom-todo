@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.ifs21028.delcomtodo.R
 import com.ifs21028.delcomtodo.data.local.entity.DelcomTodoEntity
 import com.ifs21028.delcomtodo.data.model.DelcomTodo
@@ -84,6 +85,15 @@ class TodoDetailActivity : AppCompatActivity() {
             tvTodoDetailTitle.text = todo.title
             tvTodoDetailDate.text = "Dibuat pada: ${todo.createdAt}"
             tvTodoDetailDesc.text = todo.description
+            if(todo.cover != null){
+                ivTodoDetailCover.visibility = View.VISIBLE
+                Glide.with(this@TodoDetailActivity)
+                    .load(todo.cover)
+                    .placeholder(R.drawable.ic_image_24)
+                    .into(ivTodoDetailCover)
+            }else{
+                ivTodoDetailCover.visibility = View.GONE
+            }
             viewModel.getLocalTodo(todo.id).observeOnce {
                 if(it != null){
                     delcomTodo = it
